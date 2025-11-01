@@ -23,13 +23,13 @@ export default function HomePage() {
             href="/resume"
             className="px-6 py-3 bg-purple-700 hover:bg-purple-600 rounded-lg text-white font-bold transition-colors"
           >
-            View Resume
+            Resume
           </Link>
           <Link
             href="/projects"
             className="px-6 py-3 bg-purple-700 hover:bg-purple-600 rounded-lg text-white font-semibold transition-colors"
           >
-            View Projects
+            Projects
           </Link>
         </div>
       </section>
