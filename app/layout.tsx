@@ -12,7 +12,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      style={{ background: "linear-gradient(to bottom, #5b21b6, #4c1d95, #000)" }} // your gradient
+    >
       <body className="bg-gradient-to-b from-purplebrand-800 via-purplebrand-900 to-black text-gray-100 min-h-screen">
         {/* Animated Navbar */}
         <Navbar />
