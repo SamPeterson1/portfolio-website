@@ -18,7 +18,7 @@ export default function HomePage() {
         <p className="text-gray-300 max-w-3xl text-lg md:text-xl">
           I build modern web applications with React & Next.js, focusing on clean UI, smooth interactions, and purple aesthetics.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 mt-2">
+        <div className="flex flex-row sm:flex-row gap-4 mt-2">
           <Link
             href="/resume"
             className="px-6 py-3 bg-purple-700 hover:bg-purple-600 rounded-lg text-white font-bold transition-colors"
