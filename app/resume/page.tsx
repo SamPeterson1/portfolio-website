@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 
 export default function ResumePage() {
@@ -7,7 +7,6 @@ export default function ResumePage() {
   const [resumeUrl, setResumeUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
-  // Load token from localStorage
   useEffect(() => {
     const savedToken = localStorage.getItem("captchaVerified");
     if (savedToken) {
@@ -26,10 +25,9 @@ export default function ResumePage() {
       });
 
       if (!res.ok) {
-        console.warn("Token expired or invalid, re-prompting CAPTCHA");
         localStorage.removeItem("captchaVerified");
         setCaptchaToken(null);
-        setResumeUrl(null);
+        alert("Token expired or invalid. Please complete CAPTCHA again.");
         return;
       }
 
@@ -37,20 +35,20 @@ export default function ResumePage() {
       const url = window.URL.createObjectURL(blob);
       setResumeUrl(url);
     } catch (error) {
-      console.error("Error fetching resume:", error);
+      console.error(error);
       localStorage.removeItem("captchaVerified");
       setCaptchaToken(null);
-      setResumeUrl(null);
+      alert("Failed to load resume. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
-  const handleCaptchaChange = async (token: string | null) => {
+  const handleCaptchaChange = (token: string | null) => {
     if (!token) return;
     setCaptchaToken(token);
     localStorage.setItem("captchaVerified", token);
-    await fetchResume(token);
+    fetchResume(token);
   };
 
   const handleDownload = () => {
@@ -62,45 +60,35 @@ export default function ResumePage() {
   };
 
   return (
-    <main className="min-h-screen w-full flex flex-col items-center gap-6 pt-0">
-      {/* CAPTCHA */}
+    <main className="min-h-screen w-full flex flex-col items-center gap-4 py-4 px-2 sm:px-4 md:px-6">
       {!captchaToken && !loading && (
-        <div className="flex flex-col items-center mt-2">
-          <ReCAPTCHA
-            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
-            onChange={handleCaptchaChange}
+        <ReCAPTCHA
+          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+          onChange={handleCaptchaChange}
+        />
+      )}
+
+      {loading && <p className="text-gray-400 animate-pulse">Loading resume...</p>}
+
+      {resumeUrl && (
+        <div className="w-full max-w-4xl border border-purple-700 rounded-lg overflow-hidden">
+          <iframe
+            src={resumeUrl}
+            className="w-full"
+            style={{
+              aspectRatio: "8.5 / 11",
+              maxHeight: "calc(100vh - 200px)",
+              border: "none",
+            }}
+            title="Resume PDF"
           />
         </div>
       )}
 
-      {loading && (
-        <p className="text-gray-400 text-sm mt-4 animate-pulse">
-          Loading resume...
-        </p>
-      )}
-
-{resumeUrl && (
-  <div className="flex-1 w-full max-w-4xl mt-4 border border-purple-700 rounded-lg overflow-hidden">
-  <iframe
-    src={resumeUrl}
-    className="w-full h-[90vh] sm:h-[95vh] md:h-[90vh] lg:h-[100vh] min-h-[500px] rounded-lg"
-    style={{ zoom: "0.9", maxWidth: "100%", minHeight: "400px" }}
-    title="Resume PDF"
-  />
-</div>
-
-)}
-
-
-
-
-
-
-      {/* Download button */}
       {resumeUrl && !loading && (
         <button
           onClick={handleDownload}
-          className="mt-4 px-6 py-3 bg-purple-700 hover:bg-purple-600 rounded-lg text-white font-bold transition-colors"
+          className="mt-2 px-6 py-3 bg-purple-700 hover:bg-purple-600 text-white font-bold rounded-lg transition-colors"
         >
           Download Resume
         </button>
