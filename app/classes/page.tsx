@@ -1,6 +1,5 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
-import Link from "next/link";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
 type Class = {
@@ -152,12 +151,15 @@ export default function ClassesPage() {
           Here's a list of all the classes I've taken at Georgia Tech. You can also
           download my unofficial transcript below.
         </p>
-        <Link
+
+        {/* Download Button (now triggers download) */}
+        <a
           href="/unofficial_transcript.pdf"
+          download="Sam_Peterson_Transcript.pdf"
           className="px-6 py-3 bg-purple-700 hover:bg-purple-600 rounded-lg text-white font-bold transition-colors mt-2"
         >
           Download Unofficial Transcript
-        </Link>
+        </a>
       </section>
 
       {/* Sections */}

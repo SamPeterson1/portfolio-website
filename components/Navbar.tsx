@@ -1,11 +1,16 @@
+"use client";
+import { useState } from "react";
 import Link from "next/link";
+import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const navItems = [
     { label: "Home", href: "/" },
     { label: "Projects", href: "/projects" },
     { label: "Classes", href: "/classes" },
-    { label: "Contact", href: "/contact" },
+    { label: "Resume", href: "/resume" },
   ];
 
   return (
@@ -19,8 +24,8 @@ export default function Navbar() {
           Sam Peterson
         </Link>
 
-        {/* Navigation Links */}
-        <ul className="flex gap-10 sm:gap-12 text-lg sm:text-lg">
+        {/* Desktop Navigation */}
+        <ul className="hidden md:flex gap-10 text-lg">
           {navItems.map((item) => (
             <li key={item.href} className="relative group">
               <Link
@@ -34,7 +39,32 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
+
+        {/* Mobile Hamburger Icon */}
+        <button
+          className="md:hidden text-white focus:outline-none"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+        >
+          {menuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </nav>
+
+      {/* Mobile Dropdown Menu */}
+      {menuOpen && (
+        <div className="md:hidden bg-black/90 backdrop-blur-lg px-6 py-4 flex flex-col items-center space-y-4 border-t border-purple-800">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={() => setMenuOpen(false)}
+              className="text-white text-lg font-medium hover:text-purple-400 transition-colors"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      )}
     </header>
   );
 }
