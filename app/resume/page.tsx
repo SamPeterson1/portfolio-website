@@ -72,17 +72,16 @@ export default function ResumePage() {
 
       {resumeUrl && (
         <div className="w-full max-w-4xl border border-purple-700 rounded-lg overflow-hidden">
-          <iframe
-            src={resumeUrl}
-            className="w-full"
-            style={{
-              aspectRatio: "8.5 / 11",
-              maxHeight: "calc(100vh - 200px)",
-              border: "none",
-            }}
-            title="Resume PDF"
-          />
-        </div>
+        <embed
+          src={resumeUrl}
+          type="application/pdf"
+          className="w-full h-[80vh] sm:h-[90vh] md:h-[95vh]"
+          style={{
+            objectFit: "contain",
+          }}
+        />
+      </div>
+      
       )}
 
       {resumeUrl && !loading && (
