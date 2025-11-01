@@ -80,17 +80,15 @@ export default function ResumePage() {
       )}
 
 {resumeUrl && (
-  <div className="flex justify-center w-full mt-4 px-4">
-    <iframe
-      src={resumeUrl}
-      className="border border-purple-700 rounded-lg w-full max-w-5xl"
-      style={{
-        // Take 90% of viewport height but not less than a proportional A4 height
-        height: `min(90vh, calc(80vw * 1.414))`,
-      }}
-      title="Resume PDF"
-    />
-  </div>
+  <div className="flex-1 w-full max-w-4xl mt-4 border border-purple-700 rounded-lg overflow-hidden">
+  <iframe
+    src={resumeUrl}
+    className="w-full h-[90vh] sm:h-[95vh] md:h-[90vh] lg:h-[100vh] min-h-[500px] rounded-lg"
+    style={{ zoom: "0.9", maxWidth: "100%", minHeight: "400px" }}
+    title="Resume PDF"
+  />
+</div>
+
 )}
 
 
