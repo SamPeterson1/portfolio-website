@@ -24,7 +24,7 @@ const experienceData = [
   },
   {
     title: "Data Scientist @ Quality Bicycle Products",
-    date: "Jun 2024 – Dec 2022",
+    date: "Jun 2024 – Aug 2024",
     desc: "Trained an XGBoost machine learning model to forecast daily warehouse shipments up to 12 weeks ahead with an average of 5% error, replacing legacy forecasting methods and improving employee scheduling efficiency.",
     skills: ["Python", "Machine Learning", "XGBoost", "SQL", "Pandas", "Scikit-Learn"],
   },
