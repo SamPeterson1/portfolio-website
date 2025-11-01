@@ -4,14 +4,14 @@
 @tailwind utilities;
 
 /* Ensure body/html use the same dark gradient */
-html, body {
+body {
   @apply min-h-screen w-full m-0 p-0 bg-gradient-to-br from-[#0a0a0a] via-[#1a0a2a] to-[#0a0a0a] text-gray-100;
 }
 
-
-html, body {
-  overscroll-behavior: none; /* optional: prevents bounce scroll showing white */
+html {
+  background-color: #1a0a2a; 
 }
+
 
 body {
   margin: 0;
