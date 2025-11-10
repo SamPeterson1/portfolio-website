@@ -52,6 +52,18 @@ export default function HomePage() {
           >
             Projects
           </Link>
+          <Link
+            href="https://www.github.com/sampeterson1"
+            className="px-6 py-3 bg-purple-700 hover:bg-purple-600 rounded-lg text-white font-semibold transition-colors"
+          >
+            GitHub
+          </Link>
+          <Link
+            href="https://www.linkedin.com/in/samgatech"
+            className="px-6 py-3 bg-purple-700 hover:bg-purple-600 rounded-lg text-white font-semibold transition-colors"
+          >
+            LinkedIn
+          </Link>
         </div>
       </section>
 
