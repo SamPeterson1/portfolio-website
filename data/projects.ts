@@ -12,7 +12,7 @@ export const projects: ProjectSummary[] = [
     slug: "gnc-flight-software",
     title: "GNC Flight Software",
     description:
-      "Flight software for a collection of actively stabilized high-powered rockets, supporting advanced controls algorithms and real-time telemetry.",
+      "Bare-metal flight software for a collection of actively stabilized high-powered rockets, supporting advanced controls algorithms, sensor fusion, data logging, and real-time telemetry.",
       skills: ["C/C++", "STM32 HAL", "FreeRTOS", "SPI", "UART", "I2C", "PWM", "DMA", "ARM", "Device Drivers"],
   },
   {

@@ -1,0 +1,25 @@
+Functional description:
+    Support position-based LED effects to be streamed/synchronized to multiple devices at once
+    Integrate with outside events and music
+    Provide a HTTP API for controlling effects and setting parameters
+
+Networking:
+    MDNS device discovery
+    TCP socket to receive events
+    UDP socket to stream RGB data to network devices
+
+Web server:
+    Uses axon web server framework
+    Device registration, discovery, pairing, enable/disable devices
+    Set effects, effect parameters, pause/resume 
+    
+Multithreaded architecture
+    Each device is its own thread, consumes a stream of LED colors to send to devices
+    One thread for the currently running effect - receives events and outputs a state that is used in a closure given to the device manager object
+        The device manager  calls a shader closure with the positions of each discrete lighting element in the device, streams colors to each device thread
+
+    Event sources are their own thread and send events to the effect controller
+
+Current supported endpoint devices
+    Nanoleaf shapes
+    NeoPixel LED strips controlled using an ESP32

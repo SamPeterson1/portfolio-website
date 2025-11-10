@@ -1,0 +1,21 @@
+Achieved a rating of 2300
+
+Move generation
+    Bitboards - pieces and moves on the board are represented as single 64 bit integers
+        Ex a full board would be composed of a bitboards for each player and piece type
+    Magic bitboard move generation - perfect hashing based on positions of rooks, bishops, queens, and the pieces that block their path
+    Bitshifts used for pawn move generation
+    500+ million moves generated per second
+
+Evaluation Function
+    The searh must stop at some point - we must fall back to a heuristic at the very deepest level
+    Material-based evaluation - pawns, knights, bishops, rooks, queens all have different point values
+        Utilizes the __builtin_ctzll function to efficiently find the positions of pieces in a bitboard
+    Position bonuses - bonuses to pieces placed on advantageous squares
+    Quiescense search - the evaluation function is no good if a piece is hanging, so we perform a deeper search that explores all captures before running the static evaluation function
+
+Search optimizations
+    Minimax algorithm with alpha-beta pruning
+    Transposition table - utilize zobrist hashing to create a table of previously searched positions and their evaluations (minumum, maximum, or exact). Helps with moves that ultimately lead to the same position
+    Iterative deepening - Perform a full search at a smaller depth, then using results in the transposition table to speed up the full depth search
+    Book moves - downloaded game logs from 50-100 grandmaster tournaments and compiled them into a "book" with zobrist hashing to key into it
