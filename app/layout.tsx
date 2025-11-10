@@ -2,7 +2,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 
 export const metadata = {
-  title: "My Portfolio",
+  title: "Sam Peterson",
   description: "Personal portfolio website built with Next.js",
 };
 
