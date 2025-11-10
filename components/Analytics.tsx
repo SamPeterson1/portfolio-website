@@ -11,8 +11,6 @@ export default function Analytics() {
       window.gtag("config", "G-X1952M7X12", { page_title: pathname });
       console.log(`Logged view ${pathname}`);
     }
-
-    window.gtag("event", "page_view");
   }, [pathname]);
 
   return null;
