@@ -18,7 +18,7 @@ const experienceData = [
   },
   {
     title: "Warehouse Management System (WMS) Developer @ Quality Bicycle Products",
-    date: "May 2025 – Present",
+    date: "May 2025 – Nov 2025",
     desc: "Led redesign of external integrations (SAP, labor management, cartonization, etc.) and implemented REST API integrations for cartonization and paid labor incentives",
     skills: ["SQL", "HTML", "CSS", "JS", "RESTful API", "HTTP", "TCP/IP", "Git", "Agile/Scrum", "Jira", "Confluence", ],
   },
