@@ -11,6 +11,8 @@ export default function Analytics() {
       window.gtag("config", "G-X1952M7X12", { page_path: pathname });
       console.log(`Logged view ${pathname}`);
     }
+
+    window.gtag("event", "engagement", { engagement_time_msec: 1000 });
   }, [pathname]);
 
   return null;
