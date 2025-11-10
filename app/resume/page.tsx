@@ -68,29 +68,35 @@ export default function ResumePage() {
         />
       )}
 
-      {loading && <p className="text-gray-400 animate-pulse">Loading resume...</p>}
+      {captchaToken && (
+        <>
+          <div className="text-center mb-4 text-gray-200 space-y-1">
+            <p>Email: <a href="mailto:sam.peterson1@icloud.com" className="underline hover:text-purple-300">sam.peterson1@icloud.com</a></p>
+            <p>Phone: <a href="tel:+16126692079" className="underline hover:text-purple-300">+1 (612) 669-2079</a></p>
+          </div>
 
-      {resumeUrl && (
-        <div className="w-full max-w-4xl border border-purple-700 rounded-lg overflow-hidden">
-        <embed
-          src={resumeUrl}
-          type="application/pdf"
-          className="w-full h-[80vh] sm:h-[90vh] md:h-[95vh]"
-          style={{
-            objectFit: "contain",
-          }}
-        />
-      </div>
-      
-      )}
+          {loading && <p className="text-gray-400 animate-pulse">Loading resume...</p>}
 
-      {resumeUrl && !loading && (
-        <button
-          onClick={handleDownload}
-          className="mt-2 px-6 py-3 bg-purple-700 hover:bg-purple-600 text-white font-bold rounded-lg transition-colors"
-        >
-          Download Resume
-        </button>
+          {resumeUrl && (
+            <div className="w-full max-w-4xl border border-purple-700 rounded-lg overflow-hidden">
+              <embed
+                src={resumeUrl}
+                type="application/pdf"
+                className="w-full h-[80vh] sm:h-[90vh] md:h-[95vh]"
+                style={{ objectFit: "contain" }}
+              />
+            </div>
+          )}
+
+          {resumeUrl && !loading && (
+            <button
+              onClick={handleDownload}
+              className="mt-2 px-6 py-3 bg-purple-700 hover:bg-purple-600 text-white font-bold rounded-lg transition-colors"
+            >
+              Download Resume
+            </button>
+          )}
+        </>
       )}
     </main>
   );

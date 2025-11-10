@@ -10,7 +10,7 @@ export default function Navbar() {
     { label: "Home", href: "/" },
     { label: "Projects", href: "/projects" },
     { label: "Classes", href: "/classes" },
-    { label: "Resume", href: "/resume" },
+    { label: "Resume & Contact", href: "/resume" },
   ];
 
   return (
