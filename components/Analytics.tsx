@@ -8,11 +8,11 @@ export default function Analytics() {
 
   useEffect(() => {
     if (typeof window.gtag === "function") {
-      window.gtag("config", "G-X1952M7X12", { page_path: pathname });
+      window.gtag("config", "G-X1952M7X12", { page_title: pathname });
       console.log(`Logged view ${pathname}`);
     }
 
-    window.gtag("event", "engagement", { engagement_time_msec: 1000 });
+    window.gtag("event", "page_view");
   }, [pathname]);
 
   return null;
