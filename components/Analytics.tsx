@@ -9,6 +9,7 @@ export default function Analytics() {
   useEffect(() => {
     if (typeof window.gtag === "function") {
       window.gtag("config", "G-X1952M7X12", { page_path: pathname });
+      console.log(`Logged view ${pathname}`);
     }
   }, [pathname]);
 
