@@ -4,6 +4,9 @@ import Navbar from "@/components/Navbar";
 export const metadata = {
   title: "Sam Peterson",
   description: "Personal portfolio website built with Next.js",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
