@@ -11,6 +11,11 @@ import {
 import { motion } from "framer-motion";
 
 export default function GNCFlightSoftware() {
+  const sectionVariant = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
   return (
     <main className="min-h-screen w-full flex flex-col items-center bg-gradient-to-b from-purple-950 to-purple-900 text-gray-100 p-8">
       {/* Header */}
@@ -28,10 +33,9 @@ export default function GNCFlightSoftware() {
       <section className="mt-16 max-w-5xl w-full space-y-12">
         {/* Core Functionality */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
+          initial="hidden"
+          animate="visible"
+          variants={sectionVariant}
         >
           <div className="flex items-center gap-3 mb-4">
             <Satellite className="text-purple-300" />
@@ -57,12 +61,7 @@ export default function GNCFlightSoftware() {
         </motion.div>
 
         {/* Task Architecture */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
+        <motion.div initial="hidden" animate="visible" variants={sectionVariant}>
           <div className="flex items-center gap-3 mb-4">
             <BarChart3 className="text-purple-300" />
             <h3 className="text-2xl font-semibold text-purple-200">
@@ -94,12 +93,7 @@ export default function GNCFlightSoftware() {
         </motion.div>
 
         {/* Hardware Interfaces */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
+        <motion.div initial="hidden" animate="visible" variants={sectionVariant}>
           <div className="flex items-center gap-3 mb-4">
             <CircuitBoard className="text-purple-300" />
             <h3 className="text-2xl font-semibold text-purple-200">
@@ -119,12 +113,7 @@ export default function GNCFlightSoftware() {
         </motion.div>
 
         {/* Communication Protocol */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
+        <motion.div initial="hidden" animate="visible" variants={sectionVariant}>
           <div className="flex items-center gap-3 mb-4">
             <Terminal className="text-purple-300" />
             <h3 className="text-2xl font-semibold text-purple-200">
@@ -139,13 +128,9 @@ export default function GNCFlightSoftware() {
             <li>Commands require acknowledgments; up to 3 retries on failure</li>
           </ul>
         </motion.div>
+
         {/* Simulation */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
+        <motion.div initial="hidden" animate="visible" variants={sectionVariant}>
           <div className="flex items-center gap-3 mb-4">
             <Cpu className="text-purple-300" />
             <h3 className="text-2xl font-semibold text-purple-200">
